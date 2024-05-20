@@ -10,7 +10,7 @@
 #AutoIt3Wrapper_Res_ProductName=AutoClicker
 #AutoIt3Wrapper_Res_ProductVersion=0.0.0.0
 #AutoIt3Wrapper_Res_CompanyName=AutoClicker
-#AutoIt3Wrapper_Res_LegalCopyright=Copyright © LuSlower
+#AutoIt3Wrapper_Res_LegalCopyright=Copyright Â© LuSlower
 #AutoIt3Wrapper_Res_requestedExecutionLevel=requireAdministrator
 #AutoIt3Wrapper_AU3Check_Stop_OnWarning=y
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
@@ -36,7 +36,6 @@ $save_click_delay = IniRead($INI, "Config", "ClickDelay", "0")
 $save_click_downdelay = IniRead($INI, "Config", "ClickDownDelay", "0")
 $save_button = IniRead($INI, "Config", "MouseButton", "left")
 $save_start = IniRead($INI, "Config", "AutoStart", "4")
-$save_infinity_clicks = IniRead($INI, "Config", "InfinityClicks", "4")
 #EndRegion ;INI Params
 
 Opt("MouseClickDelay", $save_click_delay) ;delete KeyDelay
@@ -112,10 +111,8 @@ $_sCount = GUICtrlRead($_count)
 GUICtrlCreateLabel("Clicks per Second", 24, 200, 90, 17)
 
 ;CheckBox
-$_start = GUICtrlCreateCheckbox("Start With Windows", 20, 272, Default, 17)
+$_start = GUICtrlCreateCheckbox("Start With Windows", 22, 264, Default, 17)
 GUICtrlSetState(-1, $save_start)
-$_infinite_clicks = GUICtrlCreateCheckbox("Unlimited Clicks", 20, 254, Default, 17)
-GUICtrlSetState(-1, $save_infinity_clicks)
 
 ;Speed
 GUICtrlCreateLabel("Speed (0 - 100)", 215, 195)
@@ -136,11 +133,6 @@ GUISetOnEvent($GUI_EVENT_MINIMIZE, "_hide")
 TraySetOnEvent($TRAY_EVENT_PRIMARYDOWN, "_show")
 _HotKey_Assign($vk_key, '_init', BitOr($HK_FLAG_NOBLOCKHOTKEY, $HK_FLAG_NOUNHOOK))
 
-;Infinite Values
-Switch GUICtrlRead($_infinite_clicks)
-	Case 1
-		$_sCount = 9999999999999
-EndSwitch
 GUISetState()
 _WinAPI_EmptyWorkingSet()
 
@@ -157,7 +149,7 @@ WEnd
 
 Func _init()
 	If GUICtrlRead($_sleep) < 10 Or GUICtrlRead($_sleep) > 300 Then
-		MsgBox(16, "Error", "Porfavor escriba un número valido para Sleep (10 - 300)")
+		MsgBox(16, "Error", "Porfavor escriba un nÃºmero valido para Sleep (10 - 300)")
 		Return
 	EndIf
 	;Init
@@ -204,7 +196,7 @@ EndFunc   ;==>_hide
 
 Func _save()
 	If GUICtrlRead($_sleep) < 10 Or GUICtrlRead($_sleep) > 300 Then
-		MsgBox(16, "Error", "Porfavor escriba un número valido para Sleep (10 - 300)")
+		MsgBox(16, "Error", "Porfavor escriba un nÃºmero valido para Sleep (10 - 300)")
 		Return
 	EndIf
 	$save_vk_key = "0x" & Hex(_GUICtrlHKI_GetHotKey($_init), 2)
@@ -229,15 +221,14 @@ Func _save()
 	EndSelect
 
 	IniWrite($INI, "Config", "MouseButton", $button)
-	IniWrite($INI, "Config", "InfinityClicks", GUICtrlRead($_infinite_clicks))
 	Local $key_run = "HKLM64\SOFTWARE\Microsoft\Windows\CurrentVersion\Run"
 	Local $value = GUICtrlRead($_start)
 	Switch $value
 		Case 1
-			RegWrite($key_run, "SetTimerRes", "reg_sz", @ScriptFullPath)
+			RegWrite($key_run, "AutoClicker", "reg_sz", @ScriptFullPath)
 			IniWrite($INI, "Start", "Windows", $value)
 		Case 4
-			RegDelete($key_run, "SetTimerRes")
+			RegDelete($key_run, "AutoClicker")
 			IniWrite($INI, "Start", "Windows", $value)
 	EndSwitch
 	MsgBox(64, "Hecho", "Cambios guardados correctamente")

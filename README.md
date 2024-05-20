@@ -3,7 +3,7 @@
 
 Un pequeño y potente generador de clicks
 
-![image](https://github.com/LuSlower/AutoClicker/assets/148411728/5d573dde-bb3b-408d-a013-740a5a28ab33)
+![image](https://github.com/LuSlower/AutoClicker/assets/148411728/b76d7704-bdce-4439-b741-aa42583a89a1)
 
 ## Contribuyendo
 Gracias totales Yashied por tus impresionantes Keyboard Hooks, sin HotKey UDF esto no sería tan fácil

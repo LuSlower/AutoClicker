@@ -9,6 +9,3 @@ Un pequeño y potente generador de clicks
 Gracias totales Yashied por tus impresionantes Keyboard Hooks, sin HotKey UDF esto no sería tan fácil
 https://www.autoitscript.com/forum/topic/90492-hotkey-udf/
 
-## DERECHOS DE AUTOR Y LICENCIA
-[LICENCIA](LICENSE)
-

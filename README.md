@@ -1,5 +1,5 @@
 # AutoClicker
-[![Total Downloads](https://img.shields.io/github/downloads/LuSlower/AutoClicker/total.svg)](https://github.com/LuSlower/AutoClicker/releases) [![PayPal Badge](https://img.shields.io/badge/PayPal-003087?logo=paypal&logoColor=fff&style=flat)](https://paypal.me/eldontweaks) 
+[![Total Downloads](https://img.shields.io/github/downloads/LuSlower/AutoClicker/total.svg)](https://github.com/LuSlower/AutoClicker/releases)
 
 A small and powerful click generator
 
